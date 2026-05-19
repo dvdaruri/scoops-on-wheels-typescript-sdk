@@ -1,0 +1,12 @@
+{
+    "cliVersion": "5.27.7",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.69.0",
+    "generatorConfig": {
+        "namespaceExport": "IceCreamClient"
+    },
+    "originGitCommit": "fb5207dfe70f06e5324fd00ac64bdaf1d92160c8",
+    "originGitCommitIsDirty": true,
+    "invokedBy": "manual",
+    "sdkVersion": "0.0.2"
+}
