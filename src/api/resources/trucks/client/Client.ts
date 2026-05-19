@@ -6,7 +6,7 @@ import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
-import * as IceCreamClient from "../../../index.js";
+import * as ScoopsOnWheels from "../../../index.js";
 
 export declare namespace TrucksClient {
     export type Options = BaseClientOptions;
@@ -31,13 +31,13 @@ export class TrucksClient {
      */
     public listTrucks(
         requestOptions?: TrucksClient.RequestOptions,
-    ): core.HttpResponsePromise<IceCreamClient.TruckSummary[]> {
+    ): core.HttpResponsePromise<ScoopsOnWheels.TruckSummary[]> {
         return core.HttpResponsePromise.fromPromise(this.__listTrucks(requestOptions));
     }
 
     private async __listTrucks(
         requestOptions?: TrucksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<IceCreamClient.TruckSummary[]>> {
+    ): Promise<core.WithRawResponse<ScoopsOnWheels.TruckSummary[]>> {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
             url: core.url.join(
@@ -55,11 +55,11 @@ export class TrucksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as IceCreamClient.TruckSummary[], rawResponse: _response.rawResponse };
+            return { data: _response.body as ScoopsOnWheels.TruckSummary[], rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -72,10 +72,10 @@ export class TrucksClient {
     /**
      * Return full details for a single truck by its ID.
      *
-     * @param {IceCreamClient.GetTruckTrucksTruckIdGetRequest} request
+     * @param {ScoopsOnWheels.GetTruckTrucksTruckIdGetRequest} request
      * @param {TrucksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link IceCreamClient.UnprocessableEntityError}
+     * @throws {@link ScoopsOnWheels.UnprocessableEntityError}
      *
      * @example
      *     await client.trucks.getTruck({
@@ -83,16 +83,16 @@ export class TrucksClient {
      *     })
      */
     public getTruck(
-        request: IceCreamClient.GetTruckTrucksTruckIdGetRequest,
+        request: ScoopsOnWheels.GetTruckTrucksTruckIdGetRequest,
         requestOptions?: TrucksClient.RequestOptions,
-    ): core.HttpResponsePromise<IceCreamClient.Truck> {
+    ): core.HttpResponsePromise<ScoopsOnWheels.Truck> {
         return core.HttpResponsePromise.fromPromise(this.__getTruck(request, requestOptions));
     }
 
     private async __getTruck(
-        request: IceCreamClient.GetTruckTrucksTruckIdGetRequest,
+        request: ScoopsOnWheels.GetTruckTrucksTruckIdGetRequest,
         requestOptions?: TrucksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<IceCreamClient.Truck>> {
+    ): Promise<core.WithRawResponse<ScoopsOnWheels.Truck>> {
         const { truck_id: truckId } = request;
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(this._options?.headers, requestOptions?.headers);
         const _response = await core.fetcher({
@@ -111,18 +111,18 @@ export class TrucksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as IceCreamClient.Truck, rawResponse: _response.rawResponse };
+            return { data: _response.body as ScoopsOnWheels.Truck, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 422:
-                    throw new IceCreamClient.UnprocessableEntityError(
-                        _response.error.body as IceCreamClient.HttpValidationError,
+                    throw new ScoopsOnWheels.UnprocessableEntityError(
+                        _response.error.body as ScoopsOnWheels.HttpValidationError,
                         _response.rawResponse,
                     );
                 default:
-                    throw new errors.IceCreamClientError({
+                    throw new errors.ScoopsOnWheelsError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,

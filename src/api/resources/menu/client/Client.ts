@@ -6,7 +6,7 @@ import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
-import * as IceCreamClient from "../../../index.js";
+import * as ScoopsOnWheels from "../../../index.js";
 
 export declare namespace MenuClient {
     export type Options = BaseClientOptions;
@@ -25,10 +25,10 @@ export class MenuClient {
      * Retrieve all menu items for a specific truck.
      * Optionally filter by maximum price.
      *
-     * @param {IceCreamClient.GetTruckMenuTrucksTruckIdMenuGetRequest} request
+     * @param {ScoopsOnWheels.GetTruckMenuTrucksTruckIdMenuGetRequest} request
      * @param {MenuClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link IceCreamClient.UnprocessableEntityError}
+     * @throws {@link ScoopsOnWheels.UnprocessableEntityError}
      *
      * @example
      *     await client.menu.getTruckMenu({
@@ -36,16 +36,16 @@ export class MenuClient {
      *     })
      */
     public getTruckMenu(
-        request: IceCreamClient.GetTruckMenuTrucksTruckIdMenuGetRequest,
+        request: ScoopsOnWheels.GetTruckMenuTrucksTruckIdMenuGetRequest,
         requestOptions?: MenuClient.RequestOptions,
-    ): core.HttpResponsePromise<IceCreamClient.Menu> {
+    ): core.HttpResponsePromise<ScoopsOnWheels.Menu> {
         return core.HttpResponsePromise.fromPromise(this.__getTruckMenu(request, requestOptions));
     }
 
     private async __getTruckMenu(
-        request: IceCreamClient.GetTruckMenuTrucksTruckIdMenuGetRequest,
+        request: ScoopsOnWheels.GetTruckMenuTrucksTruckIdMenuGetRequest,
         requestOptions?: MenuClient.RequestOptions,
-    ): Promise<core.WithRawResponse<IceCreamClient.Menu>> {
+    ): Promise<core.WithRawResponse<ScoopsOnWheels.Menu>> {
         const { truck_id: truckId, max_price: maxPrice } = request;
         const _queryParams: Record<string, unknown> = {
             max_price: maxPrice,
@@ -71,18 +71,18 @@ export class MenuClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as IceCreamClient.Menu, rawResponse: _response.rawResponse };
+            return { data: _response.body as ScoopsOnWheels.Menu, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 422:
-                    throw new IceCreamClient.UnprocessableEntityError(
-                        _response.error.body as IceCreamClient.HttpValidationError,
+                    throw new ScoopsOnWheels.UnprocessableEntityError(
+                        _response.error.body as ScoopsOnWheels.HttpValidationError,
                         _response.rawResponse,
                     );
                 default:
-                    throw new errors.IceCreamClientError({
+                    throw new errors.ScoopsOnWheelsError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -96,25 +96,25 @@ export class MenuClient {
     /**
      * Browse every menu item across all trucks, with optional price and category filters.
      *
-     * @param {IceCreamClient.ListMenuItemsMenuItemsGetRequest} request
+     * @param {ScoopsOnWheels.ListMenuItemsMenuItemsGetRequest} request
      * @param {MenuClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link IceCreamClient.UnprocessableEntityError}
+     * @throws {@link ScoopsOnWheels.UnprocessableEntityError}
      *
      * @example
      *     await client.menu.listMenuItems()
      */
     public listMenuItems(
-        request: IceCreamClient.ListMenuItemsMenuItemsGetRequest = {},
+        request: ScoopsOnWheels.ListMenuItemsMenuItemsGetRequest = {},
         requestOptions?: MenuClient.RequestOptions,
-    ): core.HttpResponsePromise<IceCreamClient.MenuItem[]> {
+    ): core.HttpResponsePromise<ScoopsOnWheels.MenuItem[]> {
         return core.HttpResponsePromise.fromPromise(this.__listMenuItems(request, requestOptions));
     }
 
     private async __listMenuItems(
-        request: IceCreamClient.ListMenuItemsMenuItemsGetRequest = {},
+        request: ScoopsOnWheels.ListMenuItemsMenuItemsGetRequest = {},
         requestOptions?: MenuClient.RequestOptions,
-    ): Promise<core.WithRawResponse<IceCreamClient.MenuItem[]>> {
+    ): Promise<core.WithRawResponse<ScoopsOnWheels.MenuItem[]>> {
         const { min_price: minPrice, max_price: maxPrice, category } = request;
         const _queryParams: Record<string, unknown> = {
             min_price: minPrice,
@@ -142,18 +142,18 @@ export class MenuClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as IceCreamClient.MenuItem[], rawResponse: _response.rawResponse };
+            return { data: _response.body as ScoopsOnWheels.MenuItem[], rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 422:
-                    throw new IceCreamClient.UnprocessableEntityError(
-                        _response.error.body as IceCreamClient.HttpValidationError,
+                    throw new ScoopsOnWheels.UnprocessableEntityError(
+                        _response.error.body as ScoopsOnWheels.HttpValidationError,
                         _response.rawResponse,
                     );
                 default:
-                    throw new errors.IceCreamClientError({
+                    throw new errors.ScoopsOnWheelsError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,

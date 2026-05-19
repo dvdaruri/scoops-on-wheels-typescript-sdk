@@ -75,9 +75,9 @@ console.log(`Found ${results.total} trucks nearby!`);
 Instantiate and use the client with the following:
 
 ```typescript
-import { IceCreamClientClient } from "scoops-on-wheels-dvdaruri";
+import { ScoopsOnWheelsClient } from "scoops-on-wheels-dvdaruri";
 
-const client = new IceCreamClientClient({ environment: "YOUR_BASE_URL" });
+const client = new ScoopsOnWheelsClient({ environment: "YOUR_BASE_URL" });
 await client.search.searchNearby({
     latitude: 1.1,
     longitude: 1.1
@@ -90,9 +90,9 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { IceCreamClient } from "scoops-on-wheels-dvdaruri";
+import { ScoopsOnWheels } from "scoops-on-wheels-dvdaruri";
 
-const request: IceCreamClient.GetTruckTrucksTruckIdGetRequest = {
+const request: ScoopsOnWheels.GetTruckTrucksTruckIdGetRequest = {
     ...
 };
 ```
@@ -103,12 +103,12 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { IceCreamClientError } from "scoops-on-wheels-dvdaruri";
+import { ScoopsOnWheelsError } from "scoops-on-wheels-dvdaruri";
 
 try {
     await client.search.searchNearby(...);
 } catch (err) {
-    if (err instanceof IceCreamClientError) {
+    if (err instanceof ScoopsOnWheelsError) {
         console.log(err.statusCode);
         console.log(err.message);
         console.log(err.body);
@@ -134,9 +134,9 @@ const client = new TrucksClient({...});
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-import { IceCreamClientClient } from "scoops-on-wheels-dvdaruri";
+import { ScoopsOnWheelsClient } from "scoops-on-wheels-dvdaruri";
 
-const client = new IceCreamClientClient({
+const client = new ScoopsOnWheelsClient({
     ...
     headers: {
         'X-Custom-Header': 'custom value'
@@ -229,9 +229,9 @@ console.log(rawResponse.headers['X-My-Header']);
 The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
 
 ```typescript
-import { IceCreamClientClient, logging } from "scoops-on-wheels-dvdaruri";
+import { ScoopsOnWheelsClient, logging } from "scoops-on-wheels-dvdaruri";
 
-const client = new IceCreamClientClient({
+const client = new ScoopsOnWheelsClient({
     ...
     logging: {
         level: logging.LogLevel.Debug, // defaults to logging.LogLevel.Info

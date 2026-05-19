@@ -11,28 +11,28 @@ export function handleNonStatusCodeError(
 ): never {
     switch (error.reason) {
         case "non-json":
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 statusCode: error.statusCode,
                 body: error.rawBody,
                 rawResponse: rawResponse,
             });
         case "body-is-null":
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 statusCode: error.statusCode,
                 rawResponse: rawResponse,
             });
         case "timeout":
-            throw new errors.IceCreamClientTimeoutError(`Timeout exceeded when calling ${method} ${path}.`, {
+            throw new errors.ScoopsOnWheelsTimeoutError(`Timeout exceeded when calling ${method} ${path}.`, {
                 cause: error.cause,
             });
         case "unknown":
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 message: error.errorMessage,
                 rawResponse: rawResponse,
                 cause: error.cause,
             });
         default:
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 message: "Unknown error",
                 rawResponse: rawResponse,
             });

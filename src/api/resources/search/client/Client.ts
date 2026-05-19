@@ -6,7 +6,7 @@ import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
-import * as IceCreamClient from "../../../index.js";
+import * as ScoopsOnWheels from "../../../index.js";
 
 export declare namespace SearchClient {
     export type Options = BaseClientOptions;
@@ -27,10 +27,10 @@ export class SearchClient {
      * Returns trucks sorted by distance, with optional filters for price range,
      * flavor availability, and open/closed status.
      *
-     * @param {IceCreamClient.SearchNearbyTrucksSearchNearbyGetRequest} request
+     * @param {ScoopsOnWheels.SearchNearbyTrucksSearchNearbyGetRequest} request
      * @param {SearchClient.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link IceCreamClient.UnprocessableEntityError}
+     * @throws {@link ScoopsOnWheels.UnprocessableEntityError}
      *
      * @example
      *     await client.search.searchNearby({
@@ -39,16 +39,16 @@ export class SearchClient {
      *     })
      */
     public searchNearby(
-        request: IceCreamClient.SearchNearbyTrucksSearchNearbyGetRequest,
+        request: ScoopsOnWheels.SearchNearbyTrucksSearchNearbyGetRequest,
         requestOptions?: SearchClient.RequestOptions,
-    ): core.HttpResponsePromise<IceCreamClient.SearchResults> {
+    ): core.HttpResponsePromise<ScoopsOnWheels.SearchResults> {
         return core.HttpResponsePromise.fromPromise(this.__searchNearby(request, requestOptions));
     }
 
     private async __searchNearby(
-        request: IceCreamClient.SearchNearbyTrucksSearchNearbyGetRequest,
+        request: ScoopsOnWheels.SearchNearbyTrucksSearchNearbyGetRequest,
         requestOptions?: SearchClient.RequestOptions,
-    ): Promise<core.WithRawResponse<IceCreamClient.SearchResults>> {
+    ): Promise<core.WithRawResponse<ScoopsOnWheels.SearchResults>> {
         const {
             latitude,
             longitude,
@@ -88,18 +88,18 @@ export class SearchClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as IceCreamClient.SearchResults, rawResponse: _response.rawResponse };
+            return { data: _response.body as ScoopsOnWheels.SearchResults, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 422:
-                    throw new IceCreamClient.UnprocessableEntityError(
-                        _response.error.body as IceCreamClient.HttpValidationError,
+                    throw new ScoopsOnWheels.UnprocessableEntityError(
+                        _response.error.body as ScoopsOnWheels.HttpValidationError,
                         _response.rawResponse,
                     );
                 default:
-                    throw new errors.IceCreamClientError({
+                    throw new errors.ScoopsOnWheelsError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,

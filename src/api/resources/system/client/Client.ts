@@ -54,7 +54,7 @@ export class SystemClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.IceCreamClientError({
+            throw new errors.ScoopsOnWheelsError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,

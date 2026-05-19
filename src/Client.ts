@@ -8,20 +8,20 @@ import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptions, normalizeClientOptions } from "./BaseClient.js";
 import * as core from "./core/index.js";
 
-export declare namespace IceCreamClientClient {
+export declare namespace ScoopsOnWheelsClient {
     export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class IceCreamClientClient {
-    protected readonly _options: NormalizedClientOptions<IceCreamClientClient.Options>;
+export class ScoopsOnWheelsClient {
+    protected readonly _options: NormalizedClientOptions<ScoopsOnWheelsClient.Options>;
     protected _trucks: TrucksClient | undefined;
     protected _search: SearchClient | undefined;
     protected _menu: MenuClient | undefined;
     protected _system: SystemClient | undefined;
 
-    constructor(options: IceCreamClientClient.Options) {
+    constructor(options: ScoopsOnWheelsClient.Options) {
         this._options = normalizeClientOptions(options);
     }
 

@@ -2,10 +2,10 @@
 
 import type * as core from "../../core/index.js";
 import * as errors from "../../errors/index.js";
-import type * as IceCreamClient from "../index.js";
+import type * as ScoopsOnWheels from "../index.js";
 
-export class UnprocessableEntityError extends errors.IceCreamClientError {
-    constructor(body: IceCreamClient.HttpValidationError, rawResponse?: core.RawResponse) {
+export class UnprocessableEntityError extends errors.ScoopsOnWheelsError {
+    constructor(body: ScoopsOnWheels.HttpValidationError, rawResponse?: core.RawResponse) {
         super({
             message: "UnprocessableEntityError",
             statusCode: 422,

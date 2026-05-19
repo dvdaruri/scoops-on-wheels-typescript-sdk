@@ -1,6 +1,6 @@
 # Reference
 ## Trucks
-<details><summary><code>client.trucks.<a href="/src/api/resources/trucks/client/Client.ts">listTrucks</a>() -> IceCreamClient.TruckSummary[]</code></summary>
+<details><summary><code>client.trucks.<a href="/src/api/resources/trucks/client/Client.ts">listTrucks</a>() -> ScoopsOnWheels.TruckSummary[]</code></summary>
 <dl>
 <dd>
 
@@ -55,7 +55,7 @@ await client.trucks.listTrucks();
 </dl>
 </details>
 
-<details><summary><code>client.trucks.<a href="/src/api/resources/trucks/client/Client.ts">getTruck</a>({ ...params }) -> IceCreamClient.Truck</code></summary>
+<details><summary><code>client.trucks.<a href="/src/api/resources/trucks/client/Client.ts">getTruck</a>({ ...params }) -> ScoopsOnWheels.Truck</code></summary>
 <dl>
 <dd>
 
@@ -100,7 +100,7 @@ await client.trucks.getTruck({
 <dl>
 <dd>
 
-**request:** `IceCreamClient.GetTruckTrucksTruckIdGetRequest` 
+**request:** `ScoopsOnWheels.GetTruckTrucksTruckIdGetRequest` 
     
 </dd>
 </dl>
@@ -121,7 +121,7 @@ await client.trucks.getTruck({
 </details>
 
 ## Search
-<details><summary><code>client.search.<a href="/src/api/resources/search/client/Client.ts">searchNearby</a>({ ...params }) -> IceCreamClient.SearchResults</code></summary>
+<details><summary><code>client.search.<a href="/src/api/resources/search/client/Client.ts">searchNearby</a>({ ...params }) -> ScoopsOnWheels.SearchResults</code></summary>
 <dl>
 <dd>
 
@@ -170,7 +170,7 @@ await client.search.searchNearby({
 <dl>
 <dd>
 
-**request:** `IceCreamClient.SearchNearbyTrucksSearchNearbyGetRequest` 
+**request:** `ScoopsOnWheels.SearchNearbyTrucksSearchNearbyGetRequest` 
     
 </dd>
 </dl>
@@ -191,7 +191,7 @@ await client.search.searchNearby({
 </details>
 
 ## Menu
-<details><summary><code>client.menu.<a href="/src/api/resources/menu/client/Client.ts">getTruckMenu</a>({ ...params }) -> IceCreamClient.Menu</code></summary>
+<details><summary><code>client.menu.<a href="/src/api/resources/menu/client/Client.ts">getTruckMenu</a>({ ...params }) -> ScoopsOnWheels.Menu</code></summary>
 <dl>
 <dd>
 
@@ -237,7 +237,7 @@ await client.menu.getTruckMenu({
 <dl>
 <dd>
 
-**request:** `IceCreamClient.GetTruckMenuTrucksTruckIdMenuGetRequest` 
+**request:** `ScoopsOnWheels.GetTruckMenuTrucksTruckIdMenuGetRequest` 
     
 </dd>
 </dl>
@@ -257,7 +257,7 @@ await client.menu.getTruckMenu({
 </dl>
 </details>
 
-<details><summary><code>client.menu.<a href="/src/api/resources/menu/client/Client.ts">listMenuItems</a>({ ...params }) -> IceCreamClient.MenuItem[]</code></summary>
+<details><summary><code>client.menu.<a href="/src/api/resources/menu/client/Client.ts">listMenuItems</a>({ ...params }) -> ScoopsOnWheels.MenuItem[]</code></summary>
 <dl>
 <dd>
 
@@ -300,7 +300,7 @@ await client.menu.listMenuItems();
 <dl>
 <dd>
 
-**request:** `IceCreamClient.ListMenuItemsMenuItemsGetRequest` 
+**request:** `ScoopsOnWheels.ListMenuItemsMenuItemsGetRequest` 
     
 </dd>
 </dl>

@@ -1,2 +1,2 @@
-export { IceCreamClientError } from "./IceCreamClientError.js";
-export { IceCreamClientTimeoutError } from "./IceCreamClientTimeoutError.js";
+export { ScoopsOnWheelsError } from "./ScoopsOnWheelsError.js";
+export { ScoopsOnWheelsTimeoutError } from "./ScoopsOnWheelsTimeoutError.js";
