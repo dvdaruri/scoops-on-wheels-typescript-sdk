@@ -1,14 +1,20 @@
-# IceCreamTest TypeScript Library
+# Scoops on Wheels TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fdvdaruri%2Fscoops-on-wheels-typescript-sdk)
 [![npm shield](https://img.shields.io/npm/v/scoops-on-wheels-dvdaruri)](https://www.npmjs.com/package/scoops-on-wheels-dvdaruri)
 
-The IceCreamTest TypeScript library provides convenient access to the IceCreamTest APIs from TypeScript.
+Scoops on Wheels is a fleet of ice cream trucks across New York City.
+This SDK lets you find the nearest truck, browse menus, and filter by
+price, flavor, and availability — all in a few lines of code.
+
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Installation](#installation)
 - [Reference](#reference)
+- [About The Fleet](#about-the-fleet)
+- [Quick Example](#quick-example)
 - [Usage](#usage)
 - [Request and Response Types](#request-and-response-types)
 - [Exception Handling](#exception-handling)
@@ -23,7 +29,10 @@ The IceCreamTest TypeScript library provides convenient access to the IceCreamTe
   - [Logging](#logging)
   - [Custom Fetch](#custom-fetch)
   - [Runtime Compatibility](#runtime-compatibility)
-- [Contributing](#contributing)
+
+## Documentation
+
+API reference documentation is available [here](https://github.com/dvdaruri/scoops-on-wheels-api).
 
 ## Installation
 
@@ -35,6 +44,32 @@ npm i -s scoops-on-wheels-dvdaruri
 
 A full reference for this library is available [here](https://github.com/dvdaruri/scoops-on-wheels-typescript-sdk/blob/HEAD/./reference.md).
 
+## About the Fleet
+
+Scoops on Wheels operates 5 trucks across NYC neighborhoods including
+Midtown, Brooklyn, Queens, the Upper West Side, and the Bronx.
+All trucks are updated in real-time with live location and menu availability.
+
+
+## Quick Example
+
+Find open trucks near you under $5:
+
+```typescript
+const client = new ScoopsOnWheels();
+
+const results = await client.trucks.searchNearby({
+  latitude: 40.7549,
+  longitude: -73.9840,
+  radiusMiles: 1.5,
+  maxPrice: 5,
+  isOpen: true,
+});
+
+console.log(`Found ${results.total} trucks nearby!`);
+```
+
+
 ## Usage
 
 Instantiate and use the client with the following:
@@ -43,7 +78,10 @@ Instantiate and use the client with the following:
 import { IceCreamClientClient } from "scoops-on-wheels-dvdaruri";
 
 const client = new IceCreamClientClient({ environment: "YOUR_BASE_URL" });
-await client.trucks.listTrucks();
+await client.search.searchNearby({
+    latitude: 1.1,
+    longitude: 1.1
+});
 ```
 
 ## Request and Response Types
@@ -68,7 +106,7 @@ will be thrown.
 import { IceCreamClientError } from "scoops-on-wheels-dvdaruri";
 
 try {
-    await client.trucks.listTrucks(...);
+    await client.search.searchNearby(...);
 } catch (err) {
     if (err instanceof IceCreamClientError) {
         console.log(err.statusCode);
@@ -105,7 +143,7 @@ const client = new IceCreamClientClient({
     }
 });
 
-const response = await client.trucks.listTrucks(..., {
+const response = await client.search.searchNearby(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -117,7 +155,7 @@ const response = await client.trucks.listTrucks(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.trucks.listTrucks(..., {
+const response = await client.search.searchNearby(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -147,7 +185,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.trucks.listTrucks(..., {
+const response = await client.search.searchNearby(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -157,7 +195,7 @@ const response = await client.trucks.listTrucks(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.trucks.listTrucks(..., {
+const response = await client.search.searchNearby(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -168,7 +206,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.trucks.listTrucks(..., {
+const response = await client.search.searchNearby(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -180,7 +218,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.trucks.listTrucks(...).withRawResponse();
+const { data, rawResponse } = await client.search.searchNearby(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);
@@ -284,12 +322,3 @@ The SDK works in the following runtimes:
 - React Native
 
 
-## Contributing
-
-While we value open-source contributions to this SDK, this library is generated programmatically.
-Additions made directly to this library would have to be moved over to our generation code,
-otherwise they would be overwritten upon the next generated release. Feel free to open a PR as
-a proof of concept, but know that we will not be able to merge it as-is. We suggest opening
-an issue first to discuss with us!
-
-On the other hand, contributions to the README are always very welcome!
